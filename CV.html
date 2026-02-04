@@ -1,0 +1,472 @@
+
+
+html
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CV - [Prénom Nom]</title>
+    <style>
+        /* Variables CSS */
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #3498db;
+            --accent-color: #e74c3c;
+            --light-color: #ecf0f1;
+            --dark-color: #2c3e50;
+            --text-color: #333;
+            --text-light: #7f8c8d;
+            --border-radius: 5px;
+            --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+
+        /* Reset et styles de base */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: #f9f9f9;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background-color: white;
+            box-shadow: var(--box-shadow);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+        }
+
+        /* En-tête */
+        header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 30px;
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .profile-img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid var(--secondary-color);
+            margin-right: 30px;
+        }
+
+        .header-content {
+            flex: 1;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 5px;
+        }
+
+        .title {
+            font-size: 1.2rem;
+            color: var(--light-color);
+            margin-bottom: 15px;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 10px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        /* Sections principales */
+        section {
+            padding: 30px;
+            border-bottom: 1px solid #eee;
+        }
+
+        h2 {
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--secondary-color);
+            display: inline-block;
+        }
+
+        /* Section À propos */
+        .about p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        /* Section Expérience */
+        .experience-item, .education-item {
+            margin-bottom: 25px;
+        }
+
+        .experience-header, .education-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 10px;
+            flex-wrap: wrap;
+        }
+
+        .job-title, .degree {
+            font-weight: bold;
+            font-size: 1.2rem;
+            color: var(--dark-color);
+        }
+
+        .company, .school {
+            color: var(--secondary-color);
+            font-weight: 500;
+        }
+
+        .date {
+            background-color: var(--light-color);
+            padding: 5px 10px;
+            border-radius: var(--border-radius);
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+
+        .description {
+            margin-top: 10px;
+        }
+
+        /* Section Compétences */
+        .skills-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .skill-category {
+            flex: 1;
+            min-width: 200px;
+        }
+
+        .skill-category h3 {
+            margin-bottom: 10px;
+            color: var(--primary-color);
+        }
+
+        .skill-list {
+            list-style-type: none;
+        }
+
+        .skill-list li {
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+        }
+
+        .skill-bar {
+            height: 8px;
+            background-color: var(--light-color);
+            border-radius: 4px;
+            margin-left: 10px;
+            flex-grow: 1;
+            position: relative;
+        }
+
+        .skill-level {
+            height: 100%;
+            border-radius: 4px;
+            background-color: var(--secondary-color);
+        }
+
+        /* Section Langues */
+        .languages {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .language {
+            flex: 1;
+            min-width: 150px;
+        }
+
+        .language-name {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .language-level {
+            color: var(--text-light);
+        }
+
+        /* Section Centres d'intérêt */
+        .interests {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .interest {
+            background-color: var(--light-color);
+            padding: 10px 15px;
+            border-radius: var(--border-radius);
+            font-size: 0.9rem;
+        }
+
+        /* Pied de page */
+        footer {
+            padding: 20px;
+            text-align: center;
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .profile-img {
+                margin-right: 0;
+                margin-bottom: 20px;
+            }
+            
+            .contact-info {
+                justify-content: center;
+            }
+            
+            .experience-header, .education-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .date {
+                margin-top: 5px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            section {
+                padding: 20px;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .profile-img {
+                width: 120px;
+                height: 120px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <img src="https://via.placeholder.com/150" alt="Photo de profil" class="profile-img">
+            <div class="header-content">
+                <h1>Prénom Nom</h1>
+                <p class="title">Développeur Web Full Stack</p>
+                <p>Passionné par le développement web et les nouvelles technologies, je cherche à mettre mes compétences au service de projets innovants.</p>
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <span>📧</span>
+                        <span>prenom.nom@email.com</span>
+                    </div>
+                    <div class="contact-item">
+                        <span>📱</span>
+                        <span>+33 6 12 34 56 78</span>
+                    </div>
+                    <div class="contact-item">
+                        <span>📍</span>
+                        <span>Paris, France</span>
+                    </div>
+                    <div class="contact-item">
+                        <span>🔗</span>
+                        <span>linkedin.com/in/prenomnom</span>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <section class="about">
+            <h2>À Propos</h2>
+            <p>Développeur web avec 5 ans d'expérience dans la création d'applications web modernes et responsives. Spécialisé en JavaScript, React et Node.js, je suis constamment à la recherche de nouvelles technologies pour améliorer mes compétences et créer des solutions innovantes.</p>
+        </section>
+
+        <section class="experience">
+            <h2>Expérience Professionnelle</h2>
+            
+            <div class="experience-item">
+                <div class="experience-header">
+                    <div>
+                        <div class="job-title">Développeur Frontend Senior</div>
+                        <div class="company">Tech Solutions Inc.</div>
+                    </div>
+                    <div class="date">2020 - Présent</div>
+                </div>
+                <div class="description">
+                    <p>Développement et maintenance d'applications web pour des clients internationaux. Collaboration avec une équipe de 8 développeurs dans un environnement Agile.</p>
+                    <ul>
+                        <li>Conception et implémentation d'interfaces utilisateur avec React et TypeScript</li>
+                        <li>Optimisation des performances pour réduire le temps de chargement de 40%</li>
+                        <li>Mentorat des développeurs juniors</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="experience-item">
+                <div class="experience-header">
+                    <div>
+                        <div class="job-title">Développeur Web Full Stack</div>
+                        <div class="company">Web Agency Paris</div>
+                    </div>
+                    <div class="date">2018 - 2020</div>
+                </div>
+                <div class="description">
+                    <p>Création de sites web sur mesure pour divers clients. Gestion de projets de A à Z, de la conception à la mise en production.</p>
+                    <ul>
+                        <li>Développement d'applications avec React, Node.js et MongoDB</li>
+                        <li>Intégration de designs responsifs avec HTML5, CSS3 et JavaScript</li>
+                        <li>Réalisation de 15+ projets clients avec satisfaction à 100%</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="education">
+            <h2>Formation</h2>
+            
+            <div class="education-item">
+                <div class="education-header">
+                    <div>
+                        <div class="degree">Master en Informatique</div>
+                        <div class="school">Université Paris-Saclay</div>
+                    </div>
+                    <div class="date">2016 - 2018</div>
+                </div>
+            </div>
+            
+            <div class="education-item">
+                <div class="education-header">
+                    <div>
+                        <div class="degree">Licence en Informatique</div>
+                        <div class="school">Université Paris Cité</div>
+                    </div>
+                    <div class="date">2013 - 2016</div>
+                </div>
+            </div>
+        </section>
+
+        <section class="skills">
+            <h2>Compétences</h2>
+            
+            <div class="skills-container">
+                <div class="skill-category">
+                    <h3>Techniques</h3>
+                    <ul class="skill-list">
+                        <li>HTML/CSS
+                            <div class="skill-bar">
+                                <div class="skill-level" style="width: 95%"></div>
+                            </div>
+                        </li>
+                        <li>JavaScript/TypeScript
+                            <div class="skill-bar">
+                                <div class="skill-level" style="width: 90%"></div>
+                            </div>
+                        </li>
+                        <li>React
+                            <div class="skill-bar">
+                                <div class="skill-level" style="width: 85%"></div>
+                            </div>
+                        </li>
+                        <li>Node.js
+                            <div class="skill-bar">
+                                <div class="skill-level" style="width: 80%"></div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="skill-category">
+                    <h3>Professionnelles</h3>
+                    <ul class="skill-list">
+                        <li>Gestion de projet
+                            <div class="skill-bar">
+                                <div class="skill-level" style="width: 85%"></div>
+                            </div>
+                        </li>
+                        <li>Travail d'équipe
+                            <div class="skill-bar">
+                                <div class="skill-level" style="width: 90%"></div>
+                            </div>
+                        </li>
+                        <li>Communication
+                            <div class="skill-bar">
+                                <div class="skill-level" style="width: 80%"></div>
+                            </div>
+                        </li>
+                        <li>Résolution de problèmes
+                            <div class="skill-bar">
+                                <div class="skill-level" style="width: 95%"></div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="languages-section">
+            <h2>Langues</h2>
+            
+            <div class="languages">
+                <div class="language">
+                    <div class="language-name">Français</div>
+                    <div class="language-level">Langue maternelle</div>
+                </div>
+                <div class="language">
+                    <div class="language-name">Anglais</div>
+                    <div class="language-level">Courant (C1)</div>
+                </div>
+                <div class="language">
+                    <div class="language-name">Espagnol</div>
+                    <div class="language-level">Intermédiaire (B1)</div>
+                </div>
+            </div>
+        </section>
+
+        <section class="interests-section">
+            <h2>Centres d'intérêt</h2>
+            
+            <div class="interests">
+                <div class="interest">Développement personnel</div>
+                <div class="interest">Voyages</div>
+                <div class="interest">Photographie</div>
+                <div class="interest">Nouvelles technologies</div>
+                <div class="interest">Sport</div>
+            </div>
+        </section>
+
+        <footer>
+            <p>Mis à jour le 15 octobre 2023</p>
+        </footer>
+    </div>
+</body>
+</html>
+
